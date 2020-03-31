@@ -22,7 +22,8 @@
     + `Pair` là một cặp **Part** và giữa cặp **Part** đó có sự liên kết. Tuy nhiên có những cặp thì sự liên kết sẽ không tồn tại (ví dụ như giữa tai và vai)  
 - Hình minh họa:
 
-<img src="images/part-and-pair.png" alt="image" style="height: 1000px"></img>
+<img src="images/part-and-pair.png" alt="image" style="height: 1000px; margin-left: auto;
+  margin-right: auto;"></img>
 <!-- ![Parts and Pairs](./images/part-and-pair.png) -->
 
 ### Neural Network
