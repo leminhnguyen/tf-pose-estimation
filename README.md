@@ -12,7 +12,7 @@
 ### OpenPose Pineline
 <hr>
 
-<img src="./images/openpose-pipeline.png" alt="image" style="height: 1000px"></img>
+<img src="./images/openpose-pipeline.png" alt="image" style="height: 1000px">
 
 ### Parts and Pairs
 <hr>
@@ -23,7 +23,7 @@
 - Hình minh họa:
 
 <img src="images/part-and-pair.png" alt="image" style="height: 1000px; margin-left: auto;
-  margin-right: auto;"></img>
+  margin-right: auto;">
 <!-- ![Parts and Pairs](./images/part-and-pair.png) -->
 
 ### Neural Network
