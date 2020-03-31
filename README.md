@@ -4,7 +4,7 @@
 ### OpenPose Overview
 <hr>
 
-- OpenPose là một thư viện để dò tìm các điểm chính trên cơ thể người và chạy được đa luồng.
+- OpenPose là một thư viện để dò tìm các bộ phận trên cơ thể người và chạy được đa luồng.
 - OpenPose được viết bằng ngôn ngữ C++ sử dụng OpenCv và Caffe
 - OpenPose được xây dựng dựa trên mạng neural network và đã được phát triển bởi đại học Carnegie Mellon, sử dụng bộ dữ liệu COCO và MPII
 - OpenPose đã được chuyển đổi để sử dụng cùng với Tensorflow, điều này làm cho framework này được sử dụng ngày càng rộng rãi hơn 
@@ -22,7 +22,8 @@
     + `Pair` là một cặp **Part** và giữa cặp **Part** đó có sự liên kết. Tuy nhiên có những cặp thì sự liên kết sẽ không tồn tại (ví dụ như giữa tai và vai)  
 - Hình minh họa:
 
-![Parts and Pairs](./images/part-and-pair.png)
+<img src="images/part-and-pair.png" alt="image" style="height: 1000px"></img>
+<!-- ![Parts and Pairs](./images/part-and-pair.png) -->
 
 ### Neural Network
 <hr>
