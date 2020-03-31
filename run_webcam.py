@@ -24,7 +24,7 @@ def str2bool(v):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='tf-pose-estimation realtime webcam')
-    parser.add_argument('--camera', type=int, default=0)
+    parser.add_argument('--camera', type=str, default=0)
 
     parser.add_argument('--resize', type=str, default='0x0',
                         help='if provided, resize images before they are processed. default=0x0, Recommends : 432x368 or 656x368 or 1312x736 ')
@@ -38,6 +38,8 @@ if __name__ == '__main__':
     parser.add_argument('--tensorrt', type=str, default="False",
                         help='for tensorrt process.')
     args = parser.parse_args()
+    print("mode0: Only Pose Estimation \nmode1: People Counter \nmode2: Fall Detection")
+    mode = int(input("Enter a mode: "))
 
     logger.debug('initialization %s : %s' % (args.model, get_graph_path(args.model)))
     w, h = model_wh(args.resize)
@@ -50,6 +52,9 @@ if __name__ == '__main__':
     ret_val, image = cam.read()
     logger.info('cam image=%dx%d' % (image.shape[1], image.shape[0]))
 
+    count = 0
+    y1 = [0,0,0,0,0]
+
     while True:
         ret_val, image = cam.read()
 
@@ -60,6 +65,29 @@ if __name__ == '__main__':
         image = TfPoseEstimator.draw_humans(image, humans, imgcopy=False)
 
         logger.debug('show+')
+        if mode == 1:
+            cv2.putText(image,
+                    f"shape: {image.shape}",
+                    (10, 50),  cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                    (255, 255, 255), 2)
+        elif mode == 2:
+            for human in humans:
+                try:
+                    head_point = human.body_parts[0]
+                    head_x = head_point.x * image.shape[1]
+                    head_y = head_point.y * image.shape[0]
+                    y1.append(head_y)
+                except:
+                    pass
+                
+                print(head_y, " - ", y1[-2])
+                if head_y - y1[-6] > 50:
+                    cv2.putText(image,
+                        f"Falls Detected",
+                        (10, 50),  cv2.FONT_HERSHEY_SIMPLEX, 0.5,
+                        (255, 255, 255), 2)
+
+        
         cv2.putText(image,
                     "FPS: %f" % (1.0 / (time.time() - fps_time)),
                     (10, 10),  cv2.FONT_HERSHEY_SIMPLEX, 0.5,
