@@ -4,15 +4,84 @@
 ### OpenPose Overview
 <hr>
 
-- OpenPose là một thư viện để dò tìm các bộ phận trên cơ thể người và chạy được đa luồng.
+- OpenPose là một thư viện để dò tìm các điểm chính trên cơ thể người và chạy được đa luồng.
 - OpenPose được viết bằng ngôn ngữ C++ sử dụng OpenCv và Caffe
 - OpenPose được xây dựng dựa trên mạng neural network và đã được phát triển bởi đại học Carnegie Mellon, sử dụng bộ dữ liệu COCO và MPII
 - OpenPose đã được chuyển đổi để sử dụng cùng với Tensorflow, điều này làm cho framework này được sử dụng ngày càng rộng rãi hơn 
 
+### Installing
+
+- Đây là repo mà tớ đã fork về từ repo chính của thư viện `OpenPose`. Vì thư viện chính gặp một vài lỗi khi cài đặt thêm các framework. Nên tớ sẽ tạo ra một file tổng hợp để mọi người cài đặt một cách dễ dàng nhất.
+
+**Step 1**: Downloading conda
+```bash
+    cd /tmp
+    curl -O https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh
+    bash Anaconda3-2020.02-Linux-x86_64.sh 
+```
+
+- Sau khi chạy lệnh ở trên xong thì chương trình bắt đầu cài `conda` vào máy, sẽ có các thông báo hỏi về `license`, vậy nên cứ `Enter` cho đến hết.
+- Sau khi cài xong thì sẽ có thông báo hỏi về việc dùng lệnh `conda` trong `terminal` ==> chọn `yes`
+- Tiếp theo:
+```bash
+    source ~\.bashrc
+    conda env list
+```
+- Nếu có danh sách môi trường của `conda` (ban đầu chỉ có mình `base` thì cài thành công)
+- Tiếp theo tạo môi trường mới (môi trường có tên là `tf-gpu`), nếu chương trình có hỏi đồng ý cài các packages hay không thì hãy đồng ý:
+```bash
+    conda create --name tf-gpu python=3.6
+```
+- Tiếp theo là khởi tạo môi trường:
+```bash
+    conda activate tf-gpu
+```
+
+
+**Step 2**: Install library
+
+- If you run your program with `CPU` , not `GPU`
+```bash
+$ git clone https://github.com/leminhnguyen/tf-pose-estimation
+$ cd tf-pose-estimation
+$ bash downloading.sh
+```
+
+- If you want to use `GPU`, you need to install nvidia-drivers first:
+
+```bash
+    $ sudo apt update
+    $ sudo ubuntu-drivers autoinstall
+    $ sudo reboot
+```
+
+```bash
+    $ git clone https://github.com/leminhnguyen/tf-pose-estimation
+    $ cd tf-pose-estimation
+    $ bash downloading-gpu.sh
+```
+
+**Step 3**: Test framework
+
+- With image
+```bash
+    python run.py --model=mobilenet_thin --resize=432x368 --image=./images/p1.jpg
+```
+![](./images/openpose-run-with-image.png)
+
+- With realcam
+```bash
+    python run_webcam.py --model=mobilenet_thin --resize=432x368
+```
+
+**Done !!!**
+
+<p align=center><h1>Behinds OpenPose</h1> </p>
+
 ### OpenPose Pineline
 <hr>
 
-<img src="./images/openpose-pipeline.png" alt="image" style="height: 1000px">
+<img src="./images/openpose-pipeline.png" alt="image" style="height: 1000px"></img>
 
 ### Parts and Pairs
 <hr>
@@ -21,9 +90,7 @@
     + `Part` chỉ một bộ phận trên cơ thể con người (cổ, vai, tay, chân,..)
     + `Pair` là một cặp **Part** và giữa cặp **Part** đó có sự liên kết. Tuy nhiên có những cặp thì sự liên kết sẽ không tồn tại (ví dụ như giữa tai và vai)  
 - Hình minh họa:
-
-<p align=center><img src="images/part-and-pair.png" alt="part-and-pair"></p>
-<!-- ![Parts and Pairs](./images/part-and-pair.png) -->
+![Parts and Pairs](./images/part-and-pair.png)
 
 ### Neural Network
 <hr>
