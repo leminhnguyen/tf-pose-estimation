@@ -1,5 +1,6 @@
 Cython
 numpy
+opencv-python
 argparse
 dill
 fire
@@ -13,4 +14,3 @@ scipy
 slidingwindow
 tqdm
 git+https://github.com/ppwwyyxx/tensorpack.git
-opencv-python

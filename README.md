@@ -50,15 +50,15 @@ $ bash downloading.sh
 - If you want to use `GPU`, you need to install nvidia-drivers first:
 
 ```bash
-    $ sudo apt update
-    $ sudo ubuntu-drivers autoinstall
-    $ sudo reboot
+$ sudo apt update
+$ sudo ubuntu-drivers autoinstall
+$ sudo reboot
 ```
 
 ```bash
-    $ git clone https://github.com/leminhnguyen/tf-pose-estimation
-    $ cd tf-pose-estimation
-    $ bash downloading-gpu.sh
+$ git clone https://github.com/leminhnguyen/tf-pose-estimation
+$ cd tf-pose-estimation
+$ bash downloading-gpu.sh
 ```
 
 **Step 3**: Test framework
