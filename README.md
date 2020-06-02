@@ -74,6 +74,12 @@ $ bash downloading-gpu.sh
     python run_webcam.py --model=mobilenet_thin --resize=432x368
 ```
 
+- With video
+```bash
+    conda activate tf-gpu
+    python run_webcam.py --model=mobilenet_thin --resize=432x368 --camera=etcs/dance.mp4 
+```
+
 **Done !!!**
 
 <p align=center><h1>Behinds OpenPose</h1> </p>
@@ -188,8 +194,9 @@ $ bash downloading-gpu.sh
 ### Reference
 <hr>
 
-1. [Human pose estimation using OpenPose with TensorFlow - Part2](https://arvrjourney.com/human-pose-estimation-using-openpose-with-tensorflow-part-2-e78ab9104fc8) - Ale Solano
-2. [Human pose estimation using OpenPose with TensorFlow - Part1](https://arvrjourney.com/human-pose-estimation-using-openpose-with-tensorflow-part-1-7dd4ca5c8027) - Ale Solano
+1. [Human pose estimation using OpenPose with TensorFlow - Part1](https://arvrjourney.com/human-pose-estimation-using-openpose-with-tensorflow-part-1-7dd4ca5c8027) - Ale Solano
+2. [Human pose estimation using OpenPose with TensorFlow - Part2](https://arvrjourney.com/human-pose-estimation-using-openpose-with-tensorflow-part-2-e78ab9104fc8) - Ale Solano
+
 
 
 ```python
